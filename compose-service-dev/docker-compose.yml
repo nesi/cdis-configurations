@@ -95,7 +95,7 @@ services:
       - ./scripts/peregrine_setup.sh:/peregrine_setup.sh
       - ./datadictionary/gdcdictionary/schemas:/schemas_dir
     environment: &env
-      DICTIONARY_URL: https://s3.amazonaws.com/dictionary-artifacts/datadictionary/develop/schema.json
+      DICTIONARY_URL: https://dictionary-bucket.s3.us-east-1.amazonaws.com/gen3dev.nesi.json
       # PATH_TO_SCHEMA_DIR: /schemas_dir
       REQUESTS_CA_BUNDLE: /etc/ssl/certs/ca-certificates.crt
     healthcheck:
@@ -239,7 +239,7 @@ services:
     networks:
       - devnet
     environment:
-      - DICTIONARY_URL=https://s3.amazonaws.com/dictionary-artifacts/datadictionary/develop/schema.json
+      - DICTIONARY_URL=https://dictionary-bucket.s3.us-east-1.amazonaws.com/gen3dev.nesi.json
       - ES_URL=esproxy-service
       - ES_INDEX_NAME=etl
       - HADOOP_URL=hdfs://spark-service:9000
